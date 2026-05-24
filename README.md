@@ -82,7 +82,7 @@ PyCharmMiscProject/
 ## Derived Metric
 **Economic Velocity** = Nominal GDP / Broad Money Supply
 
-Measures how efficiently a country converts its money supply into economic 
+This measures how efficiently a country converts its money supply into economic 
 output. A higher value means more economic activity is being generated per 
 unit of money in circulation. A lower value suggests the economy is not 
 making full use of its available money supply.
@@ -98,7 +98,7 @@ the metric automatically without needing to recalculate it.
 1. Python sends 72 API requests to the World Bank (12 countries × 6 indicators)
 2. pandas organizes the responses into a structured dataframe
 3. MySQL staging table is truncated to preserve the schema
-4. Fresh data is appended to the staging table via SQLAlchemy
+4. Data is appended to the staging table via SQLAlchemy
 5. SQL view joins all 6 indicators and calculates Economic Velocity
 6. Power BI connects directly to the view for visualization
 
@@ -108,6 +108,12 @@ the metric automatically without needing to recalculate it.
 The following data gaps exist in the World Bank database and are not errors 
 in the pipeline. NULL values are retained intentionally to preserve data 
 integrity rather than being silently dropped.
+
+### Recommendation
+For the most complete and comparable analysis across all 12 countries, 
+filter the dashboard to **2005-2013** using the year slicer. The full 
+historical range remains available for exploratory analysis but should 
+be interpreted with the limitations above in mind.
 
 ### Gaps Within the Recommended 2005-2013 Window
 These directly impact analysis and should be considered when interpreting results:
@@ -141,12 +147,6 @@ These affect analysis of the full historical range only:
 | ARE     | Gross Capital  | Data only begins in 2001     |
 | ARE     | Oil Rents      | No data after 2021           |
 | GNQ     | All indicators | Very sparse data before 1980 |
-
-### Recommendation
-For the most complete and comparable analysis across all 12 countries, 
-filter the dashboard to **2005-2013** using the year slicer. The full 
-historical range remains available for exploratory analysis but should 
-be interpreted with the limitations above in mind.
 
 ### Impact on Derived Metric
 Economic Velocity is calculated by dividing Nominal GDP by Broad Money Supply.
@@ -185,14 +185,14 @@ MYSQL_PASSWORD=yourpassword
 ```
 4. Start your MySQL server
 ### Running the Pipeline
-1. Run `sql/01_create_db.sql` in MySQL Workbench — only needed once
+1. Run `sql/01_create_db.sql` in MySQL Workbench (only needed once)
 2. Run `scraper.py` in PyCharm or your terminal
 3. Run `sql/02_create_view.sql` in MySQL Workbench
 4. Run `sql/03_verify.sql` to confirm everything loaded correctly
 5. Open Power BI, connect to `opec_macro_db`, and load `v_opec_analysis_ready`
 
 ### Refreshing Data
-To pull the latest data from the World Bank API simply rerun `scraper.py`. 
+To pull the latest data from the World Bank API, rerun `scraper.py`. 
 The pipeline automatically truncates the staging table and reloads it with 
 fresh data. The view and Power BI dashboard update instantly on refresh.
 
