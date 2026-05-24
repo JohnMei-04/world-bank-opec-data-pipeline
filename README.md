@@ -158,7 +158,7 @@ Broad Money data exists but Trade Openness and Gross Capital are missing.
 Outside this window it also affects Iran, Saudi Arabia, Venezuela, and Gabon 
 where Broad Money data ends before or after the full historical range.
 
-These NULL values are kept in the dashboard intentionally — they accurately 
+These NULL values are kept in the dashboard intentionally to accurately 
 reflect what the World Bank does and does not report, rather than hiding 
 gaps in the data.
 
