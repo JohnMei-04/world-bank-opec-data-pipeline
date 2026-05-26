@@ -15,7 +15,7 @@ into economic output.
 
 ---
 ## Dashboard Preview
-[View Live Dashboard](https://app.powerbi.com/groups/me/reports/23074062-94e4-4f0d-8c38-bb41921cc59c/70ce0e486677ecd021fc?experience=power-bi)
+[View Live Dashboard](https://app.powerbi.com/view?r=eyJrIjoiMjYwYmYzODctYmIwMi00MzYzLWE0MjctODFlZjNkNzFjZmM5IiwidCI6Ijk2NDY0YThhLWY4ZWQtNDBiMS05OWUyLTVmNmI1MGEyMDI1MCIsImMiOjN9)
 
 ## Tech Stack
 | Tool           | Purpose                                      |
